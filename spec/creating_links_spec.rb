@@ -1,3 +1,7 @@
+
+
+# then, whenever you need to clean the DB
+
 feature 'creating links' do
   scenario "so I can save the link" do
     visit '/links/new'
