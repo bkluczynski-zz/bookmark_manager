@@ -10,6 +10,7 @@ require 'rspec'
 require './models/link'
 require './app'
 
+
 Capybara.app = BookmarkManager
 
 require 'database_cleaner'
