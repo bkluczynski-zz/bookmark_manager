@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+# A sample Gemfile
+source "https://rubygems.org"
+
+ruby '2.3.1'
+
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
+gem 'sinatra'
+
+group :test, :development do
+
+    gem "rspec"
+    gem "rspec-sinatra"
+    gem "capybara"
+    gem "database_cleaner"
+    gem "dm-transactions"
+end
