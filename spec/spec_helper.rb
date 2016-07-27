@@ -9,11 +9,10 @@ require 'capybara/rspec'
 require 'rspec'
 require './models/link'
 require './app'
+require 'database_cleaner'
 
 
 Capybara.app = BookmarkManager
-
-require 'database_cleaner'
 
 
 RSpec.configure do |config|
