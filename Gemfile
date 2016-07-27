@@ -11,5 +11,3 @@ gem 'rake'
 # group :test do
   gem 'capybara'
   gem 'rspec'
-
-end
