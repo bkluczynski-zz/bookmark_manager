@@ -8,7 +8,8 @@ gem 'dm-postgres-adapter'
 gem 'database_cleaner'
 gem 'rake'
 
-group :test do
+# group :test do
   gem 'capybara'
   gem 'rspec'
+
 end
