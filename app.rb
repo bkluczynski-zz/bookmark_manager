@@ -1,12 +1,9 @@
-ENV["RACK_ENV"] ||= "development"
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/base'
-require_relative 'data_mapper_setup.rb'
+require_relative 'data_mapper_setup'
 
 class BookmarkManager < Sinatra::Base
-
-  get '/' do
-    'Hello Bookmark_manager!'
-  end
 
   get '/links' do
     @links = Link.all
@@ -18,23 +15,19 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
-    link = Link.new(
-    title: params[:title],
-    url: params[:url])
+    link = Link.new(url: params[:url], title: params[:title])
     params[:tags].split.each do |tag|
-    link.tags << Tag.create(name: tag)
+      link.tags << Tag.create(name: tag)
     end
     link.save
-  redirect '/links'
+    redirect to('/links')
   end
 
   get '/tags/:name' do
     tag = Tag.first(name: params[:name])
     @links = tag ? tag.links : []
-    erb :'links/index'
+    erb :"links/index"
   end
 
-
-  # start the server if ruby file executed directly
   run! if app_file == $0
 end

@@ -1,18 +1,15 @@
 
+feature "#creating_links" do
+  scenario "user adds new link" do
+    visit "/links/new"
+    fill_in 'url',   with: 'http://www.makersacademy.com/'
+    fill_in 'title', with: 'Makers Academy'
+    click_button 'Create link'
 
-# then, whenever you need to clean the DB
+    expect(current_path).to eq '/links' #redirecting
 
-feature 'creating links' do
-  scenario "so I can save the link" do
-    visit '/links/new'
-    fill_in 'title', with: 'BBC'
-    fill_in 'url', with: 'http://www.bbc.com'
-    click_button 'Submit'
-
-      expect(current_path).to eq '/links'
-
-    within 'ul#links' do
-      expect(page).to have_content('BBC')
+    within('ul#links') do
+      expect(page).to have_content 'Makers Academy'
     end
   end
 end

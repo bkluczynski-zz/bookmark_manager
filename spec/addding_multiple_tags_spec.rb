@@ -1,13 +1,22 @@
-feature 'adding multiple tags' do
-  scenario 'so I can tag the link many times' do
-    visit '/links/new'
-    fill_in 'title', with: 'BBC'
-    fill_in 'url', with: 'http://www.bbc.com'
-    fill_in 'tags', with: 'mission education public_money'
-    click_button 'Submit'
+
+feature "#add_tag" do
+  scenario "User adds a tag to link" do
+    visit "/links/new"
+    fill_in 'url',   with: 'http://www.makersacademy.com/'
+    fill_in 'title', with: 'Makers Academy'
+    fill_in 'tags', with: 'education'
+    click_button 'Create link'
+
     link = Link.first
-
-    expect(link.tags.map(&:name)).to include('mission', 'education', 'public_money')
-
-    end
+    expect(link.tags.map(&:name)).to include('education')
   end
+    scenario "Adding multiple tags to a new link" do
+      visit "/links/new"
+      fill_in "title", with: "Makers Academy"
+      fill_in "url", with: "http://www.makersacademy.com/"
+      fill_in "tags", with: "education ruby"
+      click_button "Create link"
+      link = Link.first
+      expect(link.tags.map(&:name)).to include("education", "ruby")
+    end
+end
