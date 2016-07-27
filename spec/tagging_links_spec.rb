@@ -1,4 +1,3 @@
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_manager_#{ENV['RACK_ENV']}")
 
 
 feature 'tagging' do
@@ -6,14 +5,14 @@ feature 'tagging' do
     visit '/links/new'
     fill_in 'title', with: 'BBC'
     fill_in 'url', with: 'http://www.bbc.com'
-    fill_in 'tag', with: 'BBC-TAG'
-    click_button 'Submit'
+    fill_in 'tags', with: 'mission'
 
-    within 'ul#links' do
-      expect(page).to have_content('New Tag')
+    click_button 'Submit'
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('mission')
     end
   end
-end
+
 
 #
 # As a time-pressed user

@@ -9,7 +9,6 @@ property :id, Serial
 property :title, String
 property :url, String
 
-has n, :taggings
-has n, :tags, :through => :taggings
+has n, :tags, through: Resource
 
 end

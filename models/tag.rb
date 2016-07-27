@@ -10,8 +10,4 @@ property :id, Serial
 property :name, Text
 
 
-has n, :taggings
-has n, :links, :through => :taggings
-
-
 end
