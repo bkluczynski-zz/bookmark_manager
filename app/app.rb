@@ -2,12 +2,14 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'sinatra/partial'
 require './app/models/link.rb'
 require './app/models/tag.rb'
 require './app/models/user.rb'
 require './data_mapper_setup.rb'
 
 class BookmarkManager < Sinatra::Base
+register Sinatra::Partial
 use Rack::MethodOverride
   enable :sessions
    set :session_secret, 'super secret'
@@ -80,6 +82,10 @@ use Rack::MethodOverride
     session[:user_id] = nil
     flash.keep[:notice] = 'goodbye!'
     redirect to '/links'
+  end
+
+  get '/sign_up/recover' do
+    "Please enter your email address"
   end
 
   helpers do
