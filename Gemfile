@@ -11,6 +11,7 @@ gem 'dm-transactions'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'pg'
+gem 'sinatra-flash'
 
 # group :test do
   gem 'rspec'
