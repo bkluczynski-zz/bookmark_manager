@@ -21,4 +21,15 @@ validates_format_of :email_address, as: :email_address
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  def self.authenticate(email, password)
+  user = first(email_address: email)
+    if user && BCrypt::Password.new(user.password_digest) == password
+      user
+    else
+      nil
+    end
+
+
+  end
+
 end
