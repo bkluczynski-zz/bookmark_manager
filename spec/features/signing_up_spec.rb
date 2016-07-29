@@ -12,6 +12,10 @@ scenario 'signing up' do
 
 scenario 'increasing the quantity of users by one' do
   expect { sign_up }.to change(User,:count).by(1)
+  expect(User.first.email_address).to eq('hulkhogan@gmail.com')
 end
+
+
+
 
 end
