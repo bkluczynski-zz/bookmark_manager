@@ -6,6 +6,7 @@ scenario 'signing up' do
   visit ('/sign_up')
   fill_in "email_address", with: "hulkhogan@gmail.com"
   fill_in "password", with: "imsosexy"
+  fill_in "password_confirmation", with: "imsosexy"
   click_button "Sign up"
    expect(page).to have_content "Hello hulkhogan@gmail.com!"
  end
