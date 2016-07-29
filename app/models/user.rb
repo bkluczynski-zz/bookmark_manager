@@ -5,8 +5,6 @@ class User
   attr_reader :password
   attr_accessor :password_confirmation
 
-# include BCrypt
-
 include DataMapper::Resource
 
 property :id, Serial

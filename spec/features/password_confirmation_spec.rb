@@ -1,6 +1,8 @@
 feature 'user signs up' do
   scenario 'user sign up with mismatching password' do
     expect { sign_up(password_confirmation: 'wrong') }.to_not change(User,:count)
+    expect(current_path).to eq('/sign_up')
+    expect(page).to have_content "Password and confirmation password do not match"
   end
 
   def sign_up(email_address: 'alice@example.com',
