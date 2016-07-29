@@ -13,24 +13,13 @@ scenario 'signing up' do
 
 scenario 'increasing the quantity of users by one' do
   expect { sign_up }.to change(User,:count).by(1)
-  expect(User.first.email_address).to eq('hulkhogan@gmail.com')
+  expect(User.first.email_address).to eq('alice@example.com')
   end
   scenario 'cannot sign up with an already registered email address' do
     sign_up
     expect { sign_up }.to_not change(User, :count)
     expect(page).to have_content('Email address is already taken')
   end
-  #
-  # scenario 'user can sign in' do
-  #   expect ('/sessions/new')
-  #   fill_in "email_address", with: "kluczynskib@gmail.com"
-  #   fill_in "password", with: "imsosexy"
-  #   fill_in "password_confirmation", with: "imsosexy"
-  #     click_button "Sign in"
-  #   expect(page).to have_content "Hello #{user.email_address}"
-
-# end
-
 end
 
 feature 'User sign in' do
