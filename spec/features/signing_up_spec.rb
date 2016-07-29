@@ -15,4 +15,10 @@ scenario 'increasing the quantity of users by one' do
   expect { sign_up }.to change(User,:count).by(1)
   expect(User.first.email_address).to eq('hulkhogan@gmail.com')
   end
+  scenario 'cannot sign up with an already registered email address' do
+    sign_up
+    expect { sign_up }.to_not change(User, :count)
+    expect(page).to have_content('Email address is already taken')
+  end
+
 end

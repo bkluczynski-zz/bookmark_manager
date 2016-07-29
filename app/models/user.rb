@@ -8,7 +8,7 @@ class User
 include DataMapper::Resource
 
 property :id, Serial
-property :email_address, String, required: true
+property :email_address, String, required: true, unique: true
 property :password_digest, String, length: 60
 
 validates_confirmation_of :password
