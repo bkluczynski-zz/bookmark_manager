@@ -14,4 +14,3 @@ feature 'shows list of links homepage' do
   end
 
 end
-DatabaseCleaner.clean
